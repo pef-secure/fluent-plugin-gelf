@@ -72,7 +72,7 @@ class GELFOutput < BufferedOutput
         gelfentry[k[0] == '_'? k: '_'+k] = v
       end
     end
-    if !gelfentry.has_key?('full_message') || gelfentry.has_key?('_message') then
+    if !gelfentry.has_key?('full_message') && gelfentry.has_key?('_message') then
       gelfentry[:full_message] = gelfentry[:_message]
       gelfentry.delete('_message');
     end
