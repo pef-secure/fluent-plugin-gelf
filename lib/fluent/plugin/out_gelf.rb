@@ -41,7 +41,7 @@ class GELFOutput < BufferedOutput
       when 'version' then
         gelfentry[:_version] = v
       when 'timestamp' then
-        gelfentry[:_timestamp] = v
+        gelfentry[:timestamp] = sprintf("%.3f", "#{v}".to_f).to_f
       when 'host' then
         if @use_record_host then gelfentry[:host] = v
         else gelfentry[:_host] = v end
