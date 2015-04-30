@@ -73,11 +73,11 @@ class GELFOutput < BufferedOutput
       end
     end
     if !gelfentry.has_key?('full_message') && gelfentry.has_key?('_message') then
-      gelfentry[:full_message] = gelfentry[:_message]
-      gelfentry.delete('_message');
+      gelfentry['full_message'] = gelfentry['_message']
+      gelfentry.delete('_message')
     end
     if !gelfentry.has_key?('short_message') && gelfentry.has_key?('full_message') then
-      gelfentry[:short_message] =  gelfentry[:full_message][0, 40]
+      gelfentry['short_message'] =  gelfentry['full_message'][0, 40]
     end
     if !gelfentry.has_key?('short_message') then
       gelfentry[:short_message] = record.to_json
